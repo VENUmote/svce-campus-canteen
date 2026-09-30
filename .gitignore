@@ -1,0 +1,9 @@
+.env
+.env.*
+.vercel
+__pycache__/
+*.py[cod]
+canteen.db
+canteen.db-shm
+canteen.db-wal
+orders.sqlite3

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff5f5">
+    <title>SVCE Canteen | Campus food, made easy</title>
+    <link rel="icon" type="image/svg+xml" href="canteen-logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <a class="logo" href="#home" aria-label="SVCE Canteen home">
+            <img class="logo-image" src="canteen-logo.svg" alt="">
+            <span>SVCE <span class="logo-accent">canteen</span><small>GOOD FOOD, GOOD COMPANY</small></span>
+        </a>
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">Our story</a>
+        </nav>
+        <button class="cart-btn" type="button" onclick="openCart()" aria-label="Open your basket">
+            <span aria-hidden="true">Bag</span>
+            <span id="cartCount" class="cart-count">0</span>
+        </button>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <span class="eyebrow"><span class="status-dot"></span> GOOD FOOD. RIGHT ON CAMPUS.</span>
+                <h1>Your next<br>campus <span>craving.</span></h1>
+                <p>Freshly made favourites, student-friendly prices, and a bill ready before you reach the counter.</p>
+                <a class="explore-btn" href="#menu">Explore today's menu <span aria-hidden="true">↗</span></a>
+                <div class="hero-note"><span><strong id="heroMenuCount">79</strong> favourites</span><i></i><span>Made fresh at SVCE</span></div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1100&q=85" alt="A fresh, colourful campus lunch bowl">
+                    <div class="image-label"><span>THE CAMPUS CLASSIC</span><strong>Good days start at the canteen.</strong></div>
+                </div>
+                <div class="hero-sticker"><span>Fresh</span><strong>every<br>day</strong><span class="sticker-sun">✳</span></div>
+                <div class="hero-caption">A little break. A lot of flavour. <span>✳</span></div>
+            </div>
+        </section>
+
+        <section class="menu-section" id="menu">
+            <div class="menu-topline"><span>THE MENU</span><span>MADE FOR YOUR BREAK</span></div>
+            <div class="section-heading">
+                <div><p class="eyebrow">PICK YOUR HAPPY</p><h2>What's cooking?</h2></div>
+                <label class="search-box">
+                    <span aria-hidden="true">⌕</span>
+                    <input type="search" id="searchInput" placeholder="Find your favourite..." autocomplete="off" aria-label="Search menu">
+                    <kbd>/</kbd>
+                </label>
+            </div>
+            <div class="categories" aria-label="Filter menu by category">
+                <button class="category-chip active" type="button" data-category="all">Everything <span data-category-count="all">79</span></button>
+                <button class="category-chip" type="button" data-category="tiffins">Tiffins <span data-category-count="tiffins">17</span></button>
+                <button class="category-chip" type="button" data-category="lunch">Lunch <span data-category-count="lunch">16</span></button>
+                <button class="category-chip" type="button" data-category="snacks">Snacks <span data-category-count="snacks">16</span></button>
+                <button class="category-chip" type="button" data-category="cooldrinks">Drinks <span data-category-count="cooldrinks">15</span></button>
+                <button class="category-chip" type="button" data-category="fastfood">Fast food <span data-category-count="fastfood">15</span></button>
+            </div>
+            <p class="menu-feedback" id="menuFeedback" role="status">Loading the menu…</p>
+            <div id="foodContainer" class="food-container" aria-live="polite"></div>
+        </section>
+
+        <section class="saver-banner" aria-label="Campus Saver discount">
+            <div class="saver-icon" aria-hidden="true">✳</div>
+            <div><span class="eyebrow">A LITTLE EXTRA LOVE</span><h2>Big break? Get 5% off.</h2><p>Spend ₹250 or more and Campus Saver takes 5% off your bill. Automatically.</p></div>
+            <div class="saver-stamp"><strong>5%</strong><span>OFF ₹250+</span></div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="about-copy"><p class="eyebrow">YOUR CAMPUS, YOUR CANTEEN</p><h2>Good food brings<br>us together.</h2><p>A familiar favourite between lectures, a quick pick-me-up before class, or lunch with your crew. We're here for all of it.</p></div>
+            <div class="about-facts"><div><strong id="aboutMenuCount">79</strong><span>menu favourites</span></div><div><strong>₹20</strong><span>little joys from</span></div><div><strong>5%</strong><span>Campus Saver deal</span></div></div>
+        </section>
+    </main>
+
+    <footer><a class="logo footer-logo" href="#home"><img class="logo-image" src="canteen-logo.svg" alt=""><span>SVCE <span class="logo-accent">canteen</span><small>GOOD FOOD, GOOD COMPANY</small></span></a><p>Made with care, for the SVCE campus.</p><a href="FOOD_IMAGE_CREDITS.md" target="_blank" rel="noopener noreferrer">Food photo credits</a><a href="#menu">Back to the menu ↑</a></footer>
+
+    <div id="cartOverlay" class="overlay" aria-hidden="true">
+        <button class="overlay-backdrop" type="button" onclick="closeCart()" aria-label="Close basket"></button>
+        <section class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+            <div class="panel-heading"><div><p class="eyebrow">YOUR CAMPUS ORDER</p><h2 id="cartTitle">Your basket<span id="cartHeadingCount"></span></h2></div><button class="icon-button" type="button" onclick="closeCart()" aria-label="Close basket">×</button></div>
+            <div id="cartItems" class="cart-items"></div>
+            <form id="checkoutForm" class="checkout-form">
+                <label for="customerName">Name for your order</label>
+                <input id="customerName" name="customerName" maxlength="80" placeholder="e.g. Aanya" required autocomplete="name">
+                <label for="studentId">Student / staff ID <span>optional</span></label>
+                <input id="studentId" name="studentId" maxlength="40" placeholder="e.g. 23A91A..." autocomplete="off">
+                <label for="paymentMethod">Payment at pickup</label>
+                <select id="paymentMethod" name="paymentMethod"><option value="Cash">Cash</option><option value="UPI">UPI</option></select>
+            </form>
+            <div class="bill-summary" id="billSummary"></div>
+            <button class="order-btn" id="placeOrderButton" type="submit" form="checkoutForm">Create my bill <span>↗</span></button>
+            <p class="form-error" id="checkoutError" role="alert"></p>
+            <p class="secure-note">Your order is saved securely on this canteen server.</p>
+        </section>
+    </div>
+
+    <div id="billOverlay" class="overlay bill-overlay" aria-hidden="true">
+        <button class="overlay-backdrop" type="button" onclick="closeBill()" aria-label="Close receipt"></button>
+        <section class="receipt-panel" role="dialog" aria-modal="true" aria-labelledby="receiptTitle">
+            <button class="icon-button receipt-close" type="button" onclick="closeBill()" aria-label="Close receipt">×</button>
+            <div id="receiptContent"></div>
+            <div class="receipt-actions"><button class="print-btn" type="button" onclick="window.print()">Print / Save PDF</button><button class="done-btn" type="button" onclick="closeBill()">Done</button></div>
+        </section>
+    </div>
+    <div id="toast" class="toast" role="status"></div>
+    <script src="script.js" defer></script>
+</body>
+</html>
